@@ -5,23 +5,11 @@ import { ProductlistComponent } from './product/productlist/productlist.componen
 import { ProducformComponent } from './product/producform/producform.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'products',
-    pathMatch: 'full',
-  },
-  {
-    path: 'products',
-    component: ProductlistComponent,
-  },
-  {
-    path: 'products/new',
-    component: ProducformComponent,
-  },
-  {
-    path: 'products/:id',
-    component: ProductpageComponent,
-  },
+  { path: '', redirectTo: 'products', pathMatch: 'full' },
+  { path: 'products', component: ProductlistComponent },
+  { path: 'products/new', component: ProducformComponent },
+  { path: 'products/edit/:id', component: ProducformComponent }, 
+  { path: 'products/:id', component: ProductpageComponent }
 ];
 
 @NgModule({

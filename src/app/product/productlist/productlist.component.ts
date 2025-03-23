@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductserviceService } from '../../services/productservice.service';
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-productlist',
@@ -7,8 +8,9 @@ import { ProductserviceService } from '../../services/productservice.service';
   styleUrls: ['./productlist.component.css'],
 })
 export class ProductlistComponent implements OnInit {
+  productData: Product[] = [];
+
   constructor(private productService: ProductserviceService) {}
-  productData: any[] = [];
 
   ngOnInit(): void {
     this.fetchData();
@@ -16,16 +18,8 @@ export class ProductlistComponent implements OnInit {
 
   fetchData(): void {
     this.productService.getProducts().subscribe(
-      (data: any[]) => {
-        console.log('API Response:', data);
-        
-        // ✅ Map the response to include SKU properly
-        this.productData = data.map((product) => ({
-          id: product.id,
-          name: product.name,
-          sku: product.sku,          // Include SKU
-          price: product.price
-        }));
+      (data: Product[]) => {
+        this.productData = data;
       },
       (error) => {
         console.error('Error fetching products:', error);
@@ -33,9 +27,7 @@ export class ProductlistComponent implements OnInit {
     );
   }
 
-  // Delete data
-  handleDelete(id: any): void {
-    console.log('Deleting ID:', id);
+  handleDelete(id: string): void {
     this.productService.deleteProduct(id).subscribe(
       () => {
         console.log('Product deleted successfully');

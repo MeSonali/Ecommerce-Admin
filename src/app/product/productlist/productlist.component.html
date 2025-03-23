@@ -1,25 +1,20 @@
-<h1>Products List</h1>
-
-<table class="table text-center">
+<table class="table">
     <thead>
         <tr>
-            <th scope="col">SrNo</th>
-            <th scope="col">SKU</th> 
-            <th scope="col">Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">Handles</th>
+            <th class="centered-header">SKU</th>
+            <th class="centered-header">Name</th>
+            <th class="centered-header">Price</th>
+            <th class="centered-header">Actions</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let element of productData; let i = index">
-            <td>{{ i + 1 }}</td>
-            <td>{{ element.sku}}</td>
-            <td>{{ element.name }}</td>
-
-            <td>{{ element.price }}</td>
-            <td>
-                <a [routerLink]="element.id" class="btn btn-success" style="margin-right: 4px;">Update</a>
-                <button class="btn btn-danger" (click)="handleDelete(element.id)">Delete</button>
+        <tr *ngFor="let product of productData">
+            <td>{{ product.sku }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td class="action-buttons">
+                <a [routerLink]="'/products/' + product.id" class="btn btn-success">Update</a>
+                <button (click)="handleDelete(product.id!)" class="btn btn-danger">Delete</button>
             </td>
         </tr>
     </tbody>
