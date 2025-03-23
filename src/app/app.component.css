@@ -1,0 +1,58 @@
+/* Navigation Container */
+.navContainer {
+  display: flex;
+  justify-content: space-between;   /* Space between logo and links */
+  align-items: center;
+  padding: 15px 30px;               /* Added padding for spacing */
+  background: #2c3e50;              /* New dark blue-gray background */
+  color: #fff;                      /* White text for contrast */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo Styling */
+.logo h2 {
+  margin: 0;
+  font-size: 26px;                  /* Slightly larger font */
+  color: #f1c40f;                   /* Golden color for the logo */
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+/* Navigation Links Styling */
+.navlinks {
+  list-style: none;
+  display: flex;
+  gap: 30px;                        /* Increased spacing between links */
+  margin: 0;
+  padding: 0;
+  justify-content: flex-end;        /* Align links to the right */
+  flex: 1;                          
+}
+
+/* Individual Link Styling */
+.navlinks a {
+  text-decoration: none;
+  color: #ffffff;                   /* White text for links */
+  font-size: 18px;
+  padding: 10px 25px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: #3498db;              /* Sky blue links */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover Effect */
+.navlinks a:hover {
+  background: #2980b9;              /* Darker blue on hover */
+  color: #f1c40f;                   /* Golden hover text */
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Active Link Styling */
+.navlinks a.router-link-active {
+  background: #f39c12;              /* Orange-yellow for active link */
+  color: #2c3e50;                   /* Dark text for contrast */
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}

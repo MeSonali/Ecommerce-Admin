@@ -1,0 +1,44 @@
+<form [formGroup]="formData" (ngSubmit)="handleSubmit()" novalidate>
+    <!-- Name -->
+    <div class="form-group">
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" formControlName="name" id="name" placeholder="Enter Name" class="form-control"
+            [class.is-invalid]="formData.get('name')?.invalid && formData.get('name')?.touched" />
+        <div *ngIf="formData.get('name')?.invalid && formData.get('name')?.touched" class="invalid-feedback">
+            Name is required.
+        </div>
+    </div>
+    <!-- SKU -->
+    <div class="form-group">
+        <label for="sku" class="form-label">SKU:</label>
+        <input type="text" formControlName="sku" id="sku" placeholder="Enter SKU" class="form-control"
+            [class.is-invalid]="formData.get('sku')?.invalid && formData.get('sku')?.touched" />
+        <div *ngIf="formData.get('sku')?.invalid && formData.get('sku')?.touched" class="invalid-feedback">
+            SkU is required.
+        </div>
+    </div>
+
+    <!-- Price -->
+    <div class="form-group">
+        <label for="price" class="form-label">Price:</label>
+        <input type="text" formControlName="price" id="price" placeholder="Enter Price" class="form-control"
+            [class.is-invalid]="formData.get('price')?.invalid && formData.get('price')?.touched" />
+        <div *ngIf="formData.get('price')?.invalid && formData.get('price')?.touched" class="invalid-feedback">
+            Price is required.
+        </div>
+    </div>
+    <!-- Image -->
+    <!-- <div class="form-group">
+        <label for="image" class="form-label">Price:</label>
+        <input type="text" formControlName="image" id="image" placeholder="Enter image URL" class="form-control"
+            [class.is-invalid]="formData.get('image')?.invalid && formData.get('image')?.touched" />
+        <div *ngIf="formData.get('image')?.invalid && formData.get('image')?.touched" class="invalid-feedback">
+            Image URL is required.
+        </div>
+    </div> -->
+
+    <!-- Action Button -->
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary" [disabled]="formData.invalid">Add Data</button>
+    </div>
+</form>

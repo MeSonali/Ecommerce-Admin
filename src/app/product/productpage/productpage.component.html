@@ -1,0 +1,16 @@
+<div class="product-container">
+    <h2>Name: {{ productDetail?.name }}</h2>
+    <h2>Price: ₹{{ productDetail?.price }}</h2>
+    <h2>SKU: {{ productDetail?.sku }}</h2>
+<!-- 
+    <div *ngIf="productDetail?.image; else noImage" class="product-card">
+        <h3>Image:</h3>
+        <img [src]="productDetail.image" alt="Product Image" />
+    </div>
+
+    <ng-template #noImage>
+        <p class="not-found">No image available 😞</p>
+    </ng-template> -->
+
+    <a routerLink="/products">Back to Products</a>
+</div>

@@ -1,0 +1,85 @@
+/* Container Styling */
+.table-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+/* Table Header */
+.table thead th {
+    background: #3498db;
+    color: #fff;
+    font-size: 18px;
+    padding: 12px 15px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #2980b9;
+}
+
+/* Table Rows */
+.table tbody tr {
+    transition: background 0.3s;
+}
+
+/* Alternate row coloring */
+.table tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.table tbody tr:hover {
+    background: #f1f1f1;
+}
+
+/* Table Cells */
+.table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+/* Success (Update) Button */
+.btn-success {
+    background: #28a745;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background: #218838;
+}
+
+/* Danger (Delete) Button */
+.btn-danger {
+    background: #dc3545;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+/* Spacing for action buttons */
+.btn + .btn {
+    margin-left: 8px;
+}
+

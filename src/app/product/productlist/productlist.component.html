@@ -1,0 +1,26 @@
+<h1>Products List</h1>
+
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th scope="col">SrNo</th>
+            <th scope="col">SKU</th> 
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Handles</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let element of productData; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ element.sku}}</td>
+            <td>{{ element.name }}</td>
+
+            <td>{{ element.price }}</td>
+            <td>
+                <a [routerLink]="element.id" class="btn btn-success" style="margin-right: 4px;">Update</a>
+                <button class="btn btn-danger" (click)="handleDelete(element.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
