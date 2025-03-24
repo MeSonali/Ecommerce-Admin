@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductserviceService } from 'src/app/services/productservice.service';
-import { Product } from '../../models/product.model';  // Import the Product model
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-productpage',
@@ -10,9 +10,10 @@ import { Product } from '../../models/product.model';  // Import the Product mod
 })
 export class ProductpageComponent implements OnInit {
 
-  productDetail: Product | null = null;   // Use the Product model
+  productDetail: Product | null = null;
   notFound: boolean = false;
-  productId: string = '';                  // Store the product ID
+  productId: string = '';
+  selectedImages: File[] = [];
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -21,7 +22,7 @@ export class ProductpageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.productId = this.activeRoute.snapshot.paramMap.get('id') || '';  // Get the product ID
+    this.productId = this.activeRoute.snapshot.paramMap.get('id') || '';
 
     if (this.productId) {
       this.getProductDetails(this.productId);
@@ -31,7 +32,6 @@ export class ProductpageComponent implements OnInit {
     }
   }
 
-  // Fetch product details
   getProductDetails(id: string): void {
     this.productService.getDataById(id).subscribe({
       next: (data: Product) => {
@@ -50,7 +50,28 @@ export class ProductpageComponent implements OnInit {
     });
   }
 
-  // Navigate to the edit form with the product ID
+  onImageSelect(event: any): void {
+    this.selectedImages = Array.from(event.target.files);
+  }
+
+  uploadImages(): void {
+    if (this.selectedImages.length > 0 && this.productId) {
+      this.productService.uploadProductImages(this.productId, this.selectedImages).subscribe({
+        next: (response) => {
+          console.log('Images uploaded successfully', response);
+          alert('Images uploaded successfully');
+          this.getProductDetails(this.productId);  // Refresh product details
+        },
+        error: (error) => {
+          console.error('Error uploading images:', error);
+          alert('Failed to upload images');
+        }
+      });
+    } else {
+      alert('Please select images to upload.');
+    }
+  }
+
   editProduct(): void {
     this.router.navigate(['/products/edit', this.productId]);
   }

@@ -1,60 +1,175 @@
-/* Product Detail Container */
+/* ✅ Product Detail Container */
 .product-detail {
-    max-width: 600px;
+    max-width: 1100px;
     margin: 50px auto;
-    padding: 30px;
-    background: #f4f4f4;               /* Light gray background */
-    border-radius: 12px;                /* Rounded corners */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    text-align: center;                 /* Center content */
+    padding: 40px;
+    background: #f4f4f4;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
     font-family: Arial, sans-serif;
+    transition: all 0.3s ease-in-out;
 }
 
-/* Heading Styling */
+/* ✅ Heading Styling */
 .product-detail h2 {
-    font-size: 32px;
-    color: #2c3e50;                     /* Dark grayish-blue */
+    font-size: 36px;
+    color: #2c3e50;
     margin-bottom: 15px;
 }
 
-/* Product Info */
 .product-detail p {
-    font-size: 18px;
+    font-size: 20px;
     color: #555;
     line-height: 1.6;
     margin: 10px 0;
 }
 
-/* Button Styling */
-.btn-edit {
-    display: inline-block;
+/* ✅ Image Grid Container */
+.image-container {
+    display: grid;
+    gap: 20px;
+    justify-content: center;
+    margin: 30px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* ✅ Dynamic Grid Layout based on Image Count */
+.image-container:has(.image-wrapper:nth-child(1):last-child) {
+    grid-template-columns: 1fr;                /* 1 Image: Full Width */
+}
+
+.image-container:has(.image-wrapper:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, 1fr);     /* 2 Images: Side by Side */
+}
+
+.image-container:has(.image-wrapper:nth-child(3):last-child) {
+    grid-template-columns: repeat(3, 1fr);     /* 3 Images: Three Columns */
+}
+
+.image-container:has(.image-wrapper:nth-child(4):last-child),
+.image-container:has(.image-wrapper:nth-child(n+4)) {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  /* 4+ Images: Flexible Grid */
+}
+
+/* ✅ Individual Image Wrapper */
+.image-wrapper {
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.product-image:hover {
+    transform: scale(1.05);                     /* Hover Zoom Effect */
+}
+
+/* ✅ No Image Message */
+.no-image-text {
+    font-size: 18px;
+    color: #e74c3c;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+/* ✅ Upload Section */
+.upload-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+/* ✅ File Input Styling */
+input[type="file"] {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    transition: border 0.3s;
+    max-width: 300px;
+}
+
+input[type="file"]:hover {
+    border-color: #3498db;
+}
+
+/* ✅ Upload Button Styling */
+.btn-upload {
     padding: 12px 24px;
-    font-size: 16px;
+    font-size: 18px;
     color: #fff;
-    background: #3498db;                /* Blue background */
+    background: #27ae60;                    /* Green Background */
     border: none;
     border-radius: 6px;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    text-decoration: none;
-    outline: none;
 }
 
-/* Hover and Click Effects */
+.btn-upload:hover {
+    background: #219150;                     /* Darker Green on Hover */
+    transform: translateY(-3px);
+}
+
+.btn-upload:active {
+    transform: translateY(1px);
+}
+
+/* ✅ Success and Error Messages */
+.success-msg {
+    color: #27ae60;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.error-msg {
+    color: #e74c3c;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* ✅ Edit Button Styling */
+.btn-edit {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 18px;
+    color: #fff;
+    background: #3498db;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 .btn-edit:hover {
-    background: #2980b9;                /* Darker blue on hover */
-    transform: translateY(-3px);        /* Lift effect */
+    background: #2980b9;
+    transform: translateY(-3px);
 }
 
 .btn-edit:active {
-    transform: translateY(1px);         /* Press-down effect */
+    transform: translateY(1px);
 }
 
-/* Not Found Message */
+/* ✅ Not Found Message */
 .not-found {
     text-align: center;
-    font-size: 20px;
-    color: #e74c3c;                     /* Red color for not found */
+    font-size: 22px;
+    color: #e74c3c;
     margin: 40px;
 }

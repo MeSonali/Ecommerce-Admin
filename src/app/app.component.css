@@ -57,3 +57,38 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+.product-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  transition: transform 0.3s;
+}
+
+.product-image:hover {
+  transform: scale(1.05);
+}
+
+.btn-upload {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.btn-upload:hover {
+  background: #218838;
+}
+
+.success-msg {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}

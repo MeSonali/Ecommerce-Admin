@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product.model';
@@ -26,9 +26,25 @@ export class ProductserviceService {
   updateProduct(id: string, data: Product): Observable<Product> {
     return this.http.put<Product>(`${this.apiUrl}/${id}`, data);
   }
-  
 
   deleteProduct(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  // ✅ Upload multiple product images
+  uploadProductImages(productId: string, imageFiles: File[]): Observable<any> {
+    const formData = new FormData();
+
+    // Append each image to the FormData object
+    for (const file of imageFiles) {
+      formData.append('images', file);  // Multiple images with the same key
+    }
+
+    const headers = new HttpHeaders({
+      'Accept': 'application/json',
+    });
+
+    // POST request to upload images
+    return this.http.post<any>(`${this.apiUrl}/${productId}/upload-images`, formData, { headers });
   }
 }
