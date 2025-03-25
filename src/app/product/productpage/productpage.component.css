@@ -11,7 +11,7 @@
     transition: all 0.3s ease-in-out;
 }
 
-/* ✅ Heading Styling */
+/* ✅ Heading and Paragraph Styling */
 .product-detail h2 {
     font-size: 36px;
     color: #2c3e50;
@@ -23,6 +23,13 @@
     color: #555;
     line-height: 1.6;
     margin: 10px 0;
+}
+
+/* ✅ SKU Styling */
+.product-detail p.sku {
+    font-weight: bold;
+    color: #34495e;
+    font-size: 22px;
 }
 
 /* ✅ Image Grid Container */
@@ -81,66 +88,6 @@
     color: #e74c3c;
     font-style: italic;
     margin-top: 20px;
-}
-
-/* ✅ Upload Section */
-.upload-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin: 30px 0;
-}
-
-/* ✅ File Input Styling */
-input[type="file"] {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background: #fff;
-    transition: border 0.3s;
-    max-width: 300px;
-}
-
-input[type="file"]:hover {
-    border-color: #3498db;
-}
-
-/* ✅ Upload Button Styling */
-.btn-upload {
-    padding: 12px 24px;
-    font-size: 18px;
-    color: #fff;
-    background: #27ae60;                    /* Green Background */
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.btn-upload:hover {
-    background: #219150;                     /* Darker Green on Hover */
-    transform: translateY(-3px);
-}
-
-.btn-upload:active {
-    transform: translateY(1px);
-}
-
-/* ✅ Success and Error Messages */
-.success-msg {
-    color: #27ae60;
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.error-msg {
-    color: #e74c3c;
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 10px;
 }
 
 /* ✅ Edit Button Styling */

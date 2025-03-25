@@ -1,5 +1,5 @@
 export const environment = {
 
   production: true,
-  apiUrl:'https://ecommerce-backend-9-gbss.onrender.com/products'
+ apiUrl: 'https://backend-3-x1z4.onrender.com/products'
 };

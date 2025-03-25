@@ -14,7 +14,27 @@
         <input type="number" id="price" formControlName="price" class="form-control" placeholder="Enter price" />
     </div>
 
+    <!-- Image Upload Field -->
+    <div class="form-group">
+        <label for="images">Upload Images:</label>
+        <input id="images" type="file" (change)="onFileSelect($event)" multiple />
+    </div>
+
+    <!-- Image Preview -->
+    <div class="preview-container" *ngIf="imagePreviews.length > 0">
+        <h3>Image Preview:</h3>
+        <div class="image-preview" *ngFor="let img of imagePreviews; let i = index">
+            <img [src]="img" alt="Preview" />
+            <button (click)="removeImage(i)" class="remove-btn">✖</button>
+        </div>
+    </div>
+
     <button type="submit" class="btn btn-primary">
         {{ isEditMode ? 'Update Product' : 'Add Product' }}
+    </button>
+    
+    <!-- Clear Form Button -->
+    <button type="button" class="btn btn-secondary" (click)="clearForm()">
+        Clear Form
     </button>
 </form>

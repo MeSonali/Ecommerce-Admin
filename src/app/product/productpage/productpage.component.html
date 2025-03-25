@@ -1,32 +1,22 @@
 <div class="product-detail" *ngIf="productDetail; else notFound">
-    <h2>{{ productDetail.name }}</h2>
-    <p>{{ productDetail.description }}</p>
-    <p>Price: {{ productDetail.price }} Rs.</p>
-  
-    <!-- Image Container for Multiple Images -->
-    <div class="image-container" *ngIf="productDetail.images && productDetail.images.length > 0; else noImage">
-      <div *ngFor="let img of productDetail.images" class="image-wrapper">
-        <img [src]="img" alt="Product Image" class="product-image" />
-      </div>
+  <h2>{{ productDetail.name }}</h2>
+  <p>SKU: {{ productDetail.sku }}</p>
+  <p>Price: {{ productDetail.price }} Rs.</p>
+
+  <!-- Image Container for Multiple Images -->
+  <div class="image-container" *ngIf="productDetail.images && productDetail.images.length > 0; else noImage">
+    <div *ngFor="let img of productDetail.images" class="image-wrapper">
+      <img [src]="img" alt="Product Image" class="product-image" />
     </div>
-  
-    <ng-template #noImage>
-      <p class="no-image-text">No images available.</p>
-    </ng-template>
-  
-    <!-- Image Upload Section -->
-    <div class="upload-section">
-      <input type="file" (change)="onImageSelect($event)" multiple />
-      <button class="btn-upload" (click)="uploadImages()">Upload Images</button>
-    </div>
-  
-    <div *ngIf="uploadSuccess" class="success-msg">Images uploaded successfully!</div>
-    <div *ngIf="uploadError" class="error-msg">Failed to upload images.</div>
-  
-    <button class="btn-edit" (click)="editProduct()">Edit</button>
   </div>
-  
-  <ng-template #notFound>
-    <p class="not-found">Product not found</p>
+
+  <ng-template #noImage>
+    <p class="no-image-text">No images available.</p>
   </ng-template>
-  
+
+  <button class="btn-edit" (click)="editProduct()">Edit</button>
+</div>
+
+<ng-template #notFound>
+  <p class="not-found">Product not found</p>
+</ng-template>

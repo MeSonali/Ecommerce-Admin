@@ -1,4 +1,4 @@
-* Form Container */
+/* === Form Container === */
 form {
     max-width: 600px;
     margin: 40px auto;
@@ -8,13 +8,13 @@ form {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Form Group Styling */
+/* === Form Group Styling === */
 .form-group {
     margin-bottom: 20px;
 }
 
-/* Labels */
-.form-label {
+/* === Labels === */
+label {
     font-size: 16px;
     font-weight: 600;
     color: #333;
@@ -22,7 +22,7 @@ form {
     margin-bottom: 8px;
 }
 
-/* Input Fields */
+/* === Input Fields === */
 .form-control {
     width: 100%;
     padding: 12px;
@@ -32,33 +32,24 @@ form {
     transition: border 0.3s, box-shadow 0.3s;
 }
 
-/* Input Focus Effect */
-.form-control:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
-    outline: none;
-}
-
-/* Invalid Field Highlight */
-.is-invalid {
-    border-color: #dc3545;
-    background-color: #fff5f5;
-}
-
-.is-invalid:focus {
-    border-color: #dc3545;
-    box-shadow: 0 0 8px rgba(220, 53, 69, 0.25);
-}
-
-/* Validation Error Message */
-.invalid-feedback {
-    color: #dc3545;
+/* === File Upload Field === */
+input[type="file"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
     font-size: 14px;
-    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border 0.3s;
+    cursor: pointer;
 }
 
-/* Submit Button */
-.btn-primary {
+input[type="file"]:hover {
+    border-color: #007bff;
+}
+
+/* === Submit Button === */
+.btn {
     display: inline-block;
     width: 100%;
     padding: 12px;
@@ -68,15 +59,65 @@ form {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.3s;
 }
 
-.btn-primary:hover {
+.btn:hover {
     background: #0056b3;
 }
 
-/* Disabled Button */
-.btn-primary:disabled {
-    background: #ccc;
-    cursor: not-allowed;
+/* === Image Previews === */
+.preview-container {
+    margin: 20px 0;
+}
+
+.preview-container h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+/* Grid-style Image Previews */
+.image-preview {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+/* Hover Effect */
+.image-preview:hover {
+    transform: scale(1.05);
+}
+
+/* Image Styling */
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Remove Button */
+.btn-remove {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.btn-remove:hover {
+    background: #c82333;
 }

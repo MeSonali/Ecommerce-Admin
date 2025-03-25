@@ -1,50 +1,43 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Product } from '../models/product.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ProductserviceService {
-  private apiUrl = 'https://ecommerce-backend-9-gbss.onrender.com/products';
+  private apiUrl = `${environment.apiUrl}`;  // ✅ Correct base URL
 
   constructor(private http: HttpClient) {}
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.apiUrl);
+  // ✅ Get all products
+  getProducts(): Observable<any> {
+    return this.http.get(this.apiUrl);
   }
 
-  getDataById(id: string): Observable<Product> {
-    return this.http.get<Product>(`${this.apiUrl}/${id}`);
+  // ✅ Get product by ID
+  getDataById(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`);
   }
 
-  addProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(this.apiUrl, product);
+  // ✅ Add product with images (fixing the duplicate path issue)
+  addProductWithImages(formData: FormData): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/add`, formData);  // ✅ Fixed
   }
 
-  updateProduct(id: string, data: Product): Observable<Product> {
-    return this.http.put<Product>(`${this.apiUrl}/${id}`, data);
+  // ✅ Update product with images
+  updateProductWithImages(id: string, formData: FormData): Observable<any> {
+    return this.http.put(`${environment.apiUrl}/${id}`, formData);  // ✅ Fixed
   }
 
-  deleteProduct(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  // ✅ Upload product images separately
+  uploadProductImages(id: string, formData: FormData): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/upload-images/${id}`, formData);  // ✅ Fixed
   }
 
-  // ✅ Upload multiple product images
-  uploadProductImages(productId: string, imageFiles: File[]): Observable<any> {
-    const formData = new FormData();
-
-    // Append each image to the FormData object
-    for (const file of imageFiles) {
-      formData.append('images', file);  // Multiple images with the same key
-    }
-
-    const headers = new HttpHeaders({
-      'Accept': 'application/json',
-    });
-
-    // POST request to upload images
-    return this.http.post<any>(`${this.apiUrl}/${productId}/upload-images`, formData, { headers });
+  // ✅ Delete product by ID
+  deleteProduct(id: string): Observable<any> {
+    return this.http.delete(`${environment.apiUrl}/${id}`);  // ✅ Fixed
   }
 }
